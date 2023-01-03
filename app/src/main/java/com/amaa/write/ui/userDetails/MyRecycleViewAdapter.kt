@@ -53,11 +53,7 @@ class MyviewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder
         binding.FirstNameTextView.text = post.firstName
         binding.secondNameTextView.text = post.lastName
         binding.userTextField.text = post.Posts
-        binding.searchButton.setOnClickListener {
 
-
-
-        }
 
     }
 

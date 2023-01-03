@@ -3,9 +3,7 @@ package com.amaa.write.ui.userDetails
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -42,7 +40,6 @@ class UserDetailsFragment : Fragment() {
             inflater,
             R.layout.user_details_fragment, container, false
         )
-
         val application = requireNotNull(this.activity).application
 
         val dao = AppPostsDatabase.getInstance(application).postsDatabaseDao
@@ -86,7 +83,32 @@ class UserDetailsFragment : Fragment() {
         })
 
     }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.nav_menu, menu)
+        val item = menu.findItem(R.id.overflowMenu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.profile -> {Toast.makeText(context,"Profile",Toast.LENGTH_SHORT).show()
+
+
+
+                    //add new update fragment #######################
+
+
+
+            }
+            R.id.sign_out -> {Toast.makeText(context,"Signed Out",Toast.LENGTH_SHORT).show()
+
+                    val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToLoginFragment()
+                    NavHostFragment.findNavController(this).navigate(action)
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
