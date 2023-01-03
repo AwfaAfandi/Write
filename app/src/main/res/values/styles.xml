@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+
+    <style name="PlainTextStyle">
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:inputType">textPersonName</item>
+    </style>
+
+
+</resources>
