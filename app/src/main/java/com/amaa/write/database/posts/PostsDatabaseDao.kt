@@ -13,7 +13,7 @@ interface PostsDatabaseDao {
     suspend fun insert(posts: PostsEntity)
 
 
-    @Query("SELECT * FROM posts_table")
+    @Query("SELECT * FROM posts_table ORDER BY postid DESC")
     fun getAllPosts(): LiveData<List<PostsEntity>>
 
     @Delete

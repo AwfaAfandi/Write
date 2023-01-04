@@ -73,7 +73,7 @@ class UserDetailsFragment : Fragment() {
     private fun displayUsersList() {
         Log.i("MYTAG", "Inside ...UserDetails..Fragment")
         userDetailsViewModel.users.observe(viewLifecycleOwner, Observer {
-            binding.usersRecyclerView.adapter = MyRecycleViewAdapter(it,userDetailsViewModel)
+            binding.usersRecyclerView.adapter = MyRecycleViewAdapter(it,userDetailsViewModel,context)
         })
 
     }
