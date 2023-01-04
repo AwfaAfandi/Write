@@ -2,15 +2,10 @@ package com.amaa.write
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.amaa.write.databinding.ActivityMainBinding
-import java.lang.System.exit
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

@@ -18,4 +18,6 @@ class PostsRepository(private val dao: PostsDatabaseDao) {
         return dao.getAllPosts()
     }
 
+    suspend fun deletePosts(postid: PostsEntity)=dao.delete(postid)
+
 }

@@ -2,12 +2,12 @@ package com.amaa.write.ui.userDetails
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.amaa.write.database.posts.PostsEntity
 import com.amaa.write.database.posts.PostsRepository
 import com.amaa.write.database.userinformation.RegisterRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class UserDetailsViewModel (private val repository: PostsRepository, application: Application):AndroidViewModel(application){
 
@@ -22,9 +22,8 @@ class UserDetailsViewModel (private val repository: PostsRepository, application
         _navigateto.value=false
     }
 
-    fun backButtonclicked(){
-        _navigateto.value = true
-
+    fun deletepost(id: PostsEntity): Job = viewModelScope.launch {
+        repository.deletePosts(postid = id )
     }
 
 

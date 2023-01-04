@@ -2,6 +2,7 @@ package com.amaa.write.database.posts
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -15,10 +16,8 @@ interface PostsDatabaseDao {
     @Query("SELECT * FROM posts_table")
     fun getAllPosts(): LiveData<List<PostsEntity>>
 
-    @Query("DELETE FROM posts_table")
-    suspend fun deleteAll(): Int
-
-
+    @Delete
+    suspend fun delete(postid: PostsEntity )
 
 
 }

@@ -1,6 +1,5 @@
 package com.amaa.write.ui.userDetails
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -10,17 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amaa.write.R
-import com.amaa.write.database.AppDatabase
 import com.amaa.write.database.AppPostsDatabase
 import com.amaa.write.database.posts.PostsRepository
-import com.amaa.write.database.userinformation.RegisterRepository
-import com.amaa.write.databinding.ListItemBinding
 import com.amaa.write.databinding.UserDetailsFragmentBinding
-import com.amaa.write.ui.post.PostFragmentDirections
-import kotlin.math.log
 
 class UserDetailsFragment : Fragment() {
 
@@ -29,6 +22,7 @@ class UserDetailsFragment : Fragment() {
 
     private var _binding: UserDetailsFragmentBinding? = null
     private val binding get() = _binding!!
+
 
 
     override fun onCreateView(
@@ -79,36 +73,11 @@ class UserDetailsFragment : Fragment() {
     private fun displayUsersList() {
         Log.i("MYTAG", "Inside ...UserDetails..Fragment")
         userDetailsViewModel.users.observe(viewLifecycleOwner, Observer {
-            binding.usersRecyclerView.adapter = MyRecycleViewAdapter(it)
+            binding.usersRecyclerView.adapter = MyRecycleViewAdapter(it,userDetailsViewModel)
         })
 
     }
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.nav_menu, menu)
-        val item = menu.findItem(R.id.overflowMenu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
-            R.id.profile -> {Toast.makeText(context,"Profile",Toast.LENGTH_SHORT).show()
-
-
-
-                    //add new update fragment #######################
-
-
-
-            }
-            R.id.sign_out -> {Toast.makeText(context,"Signed Out",Toast.LENGTH_SHORT).show()
-
-                    val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToLoginFragment()
-                    NavHostFragment.findNavController(this).navigate(action)
-
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 

@@ -102,9 +102,7 @@ class PostFragmentViewModel(private val repository: PostsRepository, application
         repository.insert(post)
     }
 
-//    fun clearALl():Job = viewModelScope.launch {
-//        repository.deleteAll()
-//    }
+
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
