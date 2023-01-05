@@ -1,5 +1,6 @@
 package com.amaa.write.ui.userDetails
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -53,17 +54,31 @@ class MyviewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder
 
         val intent = Intent(Intent.ACTION_SEND).apply {
             type ="text/*"
-            putExtra(Intent.EXTRA_TEXT , post.Posts)
+            putExtra(Intent.EXTRA_TEXT , "Written by : ${post.firstName} ${post.lastName} \n \n  ${post.Posts} \n \n Shared By ( Write App )")
         }
 
-        binding.searchButton.setOnClickListener {
+        binding.shareButton.setOnClickListener {
          binding.root.context.startActivity(intent)
-
         }
 
-   binding.deleteButton.setOnClickListener {
-    viewModel.deletepost(post)
-}
+         binding.deleteButton.setOnClickListener {
+
+             val builder = AlertDialog.Builder(binding.root.context)
+             builder.setTitle("Delete :")
+             builder.setMessage("Are you sure you want to delete this post?")
+
+             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+
+                 viewModel.deletepost(post)
+             }
+
+             builder.setNegativeButton(android.R.string.no) { dialog, which ->
+
+             }
+             builder.show()
+
+
+          }
 
 
 

@@ -25,9 +25,7 @@
         <action
             android:id="@+id/action_userDetailsFragment_to_postFragment"
             app:destination="@id/postFragment" />
-        <action
-            android:id="@+id/action_userDetailsFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -40,7 +38,9 @@
         <action
             android:id="@+id/action_loginFragment_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/postFragment"
         android:name="com.amaa.write.ui.post.PostFragment"
@@ -49,5 +49,7 @@
         <action
             android:id="@+id/action_postFragment_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment" />
+
     </fragment>
+
 </navigation>

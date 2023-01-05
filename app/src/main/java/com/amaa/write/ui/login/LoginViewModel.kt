@@ -1,6 +1,7 @@
 package com.amaa.write.ui.login
 
 import android.app.Application
+import android.os.Bundle
 import android.util.Log
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
@@ -8,10 +9,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.amaa.write.database.userinformation.RegisterRepository
+import com.amaa.write.ui.post.PostFragment
+import com.amaa.write.ui.userDetails.UserDetailsFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+
 
 class LoginViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
@@ -19,10 +23,10 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
     val users = repository.users
 
     @Bindable
-    val inputUsername = MutableLiveData<String>()
+    val inputUsername = MutableLiveData<String?>()
 
     @Bindable
-    val inputPassword = MutableLiveData<String>()
+    val inputPassword = MutableLiveData<String?>()
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -76,6 +80,7 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
                 }
             }
         }
+
     }
 
 

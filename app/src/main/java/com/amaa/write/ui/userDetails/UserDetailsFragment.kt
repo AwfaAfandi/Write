@@ -3,6 +3,7 @@ package com.amaa.write.ui.userDetails
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -16,6 +17,8 @@ import com.amaa.write.database.posts.PostsRepository
 import com.amaa.write.databinding.UserDetailsFragmentBinding
 
 class UserDetailsFragment : Fragment() {
+
+
 
     private lateinit var userDetailsViewModel: UserDetailsViewModel
 
@@ -86,8 +89,8 @@ class UserDetailsFragment : Fragment() {
             val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToPostFragment()
             NavHostFragment.findNavController(this).navigate(action)
 
+ }
 
-        }
 
 
     }

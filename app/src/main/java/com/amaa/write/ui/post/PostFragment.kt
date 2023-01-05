@@ -1,13 +1,14 @@
 package com.amaa.write.ui.post
 
+import android.R.attr.defaultValue
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -15,14 +16,23 @@ import com.amaa.write.database.AppPostsDatabase
 import com.amaa.write.database.posts.PostsRepository
 import com.amaa.write.databinding.FragmentPostBinding
 
+
 class PostFragment : Fragment() {
     private var _binding: FragmentPostBinding  ? = null
     private val binding get() = _binding!!
     private lateinit var postsViewModel: PostFragmentViewModel
-
+    private lateinit var username: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        val bundle = this.arguments
+        if (bundle != null) {
+            username = bundle.getString("UserName").toString()
+        }
+
+
 
     }
 
