@@ -108,7 +108,36 @@ class UserDetailsFragment : Fragment() {
 
  }
 
+binding.bottomBar.setOnItemSelectedListener {
 
+    when (binding.bottomBar.id) {
+
+        R.id.Home_tab -> {
+
+
+            return@setOnItemSelectedListener true
+        }
+        R.id.search_tab -> {
+
+
+
+            return@setOnItemSelectedListener true
+        }
+        R.id.profile_tab -> {
+
+
+            return@setOnItemSelectedListener true
+        }
+        else -> {
+
+            val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToLoginFragment()
+            NavHostFragment.findNavController(this).navigate(action)
+            return@setOnItemSelectedListener true
+        }
+    }
+
+
+}
 
     }
 

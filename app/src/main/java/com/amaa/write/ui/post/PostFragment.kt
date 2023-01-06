@@ -113,6 +113,8 @@ class PostFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(action)
         }
 
+
+        //passing data from login fragment to post fragment
         postsViewModel.email = usernameId
         postsViewModel.firstName = firstnameId
         postsViewModel.lastName = lastnameId
