@@ -26,8 +26,14 @@ class PostFragment : Fragment() {
 
     companion object {
         val USERNAME = "username"
+        val FIRSTNAME = "firstname"
+        val LASTNAME = "lastname"
     }
+
     private lateinit var usernameId: String
+    private lateinit var firstnameId: String
+    private lateinit var lastnameId: String
+
     private var _binding: FragmentPostBinding  ? = null
     private val binding get() = _binding!!
     private lateinit var postsViewModel: PostFragmentViewModel
@@ -39,6 +45,8 @@ class PostFragment : Fragment() {
 
         arguments?.let {
             usernameId = it.getString(UserDetailsFragment.USERNAME).toString()
+            firstnameId = it.getString(UserDetailsFragment.FIRSTNAME).toString()
+            lastnameId = it.getString(UserDetailsFragment.LASTNAME).toString()
         }
 
     }
@@ -101,17 +109,19 @@ class PostFragment : Fragment() {
 
         _binding?.cancelButton?.setOnClickListener{
 
-            val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment(usernameId)
+            val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment(usernameId,firstnameId,lastnameId)
             NavHostFragment.findNavController(this).navigate(action)
         }
 
         postsViewModel.email = usernameId
+        postsViewModel.firstName = firstnameId
+        postsViewModel.lastName = lastnameId
 
     }
 
 
     private fun displayPostsList() {
-        val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment(usernameId)
+        val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment(usernameId,firstnameId,lastnameId)
         NavHostFragment.findNavController(this).navigate(action)
     }
 

@@ -97,7 +97,7 @@ class LoginFragment : Fragment() {
 
     private fun navigateUserDetails() {
         Log.i("MYTAG","insidisplayUsersList")
-        val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment(username = loginViewModel.inputUsername.value.toString())
+        val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment(username = loginViewModel.inputUsername.value.toString() ,firstname = loginViewModel.usersNames.firstName ,lastname = loginViewModel.usersNames.lastName )
         NavHostFragment.findNavController(this).navigate(action)
     }
 

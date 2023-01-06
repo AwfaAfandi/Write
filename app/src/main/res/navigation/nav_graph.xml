@@ -19,9 +19,15 @@
         android:label="New Posts"
         tools:layout="@layout/user_details_fragment">
 
-    <argument
+        <argument
         android:name="username"
         app:argType="string" />
+        <argument
+            android:name="firstname"
+            app:argType="string" />
+        <argument
+            android:name="lastname"
+            app:argType="string" />
 
 
         <action
@@ -54,6 +60,13 @@
 
         <argument
             android:name="username"
+            app:argType="string" />
+
+        <argument
+            android:name="firstname"
+            app:argType="string" />
+        <argument
+            android:name="lastname"
             app:argType="string" />
 
         <action

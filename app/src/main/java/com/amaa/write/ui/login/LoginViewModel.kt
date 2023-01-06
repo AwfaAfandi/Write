@@ -9,6 +9,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.amaa.write.database.userinformation.RegisterEntity
 import com.amaa.write.database.userinformation.RegisterRepository
 import com.amaa.write.ui.post.PostFragment
 import com.amaa.write.ui.userDetails.UserDetailsFragment
@@ -20,7 +21,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
-
+    lateinit var usersNames : RegisterEntity
 
     @Bindable
     val inputUsername = MutableLiveData<String?>()
@@ -66,7 +67,7 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
             _errorToast.value = true
         } else {
             uiScope.launch {
-                val usersNames = repository.getUserName(inputUsername.value!!)
+                 usersNames = repository.getUserName(inputUsername.value!!)!!
                 if (usersNames != null) {
                     if(usersNames.passwrd == inputPassword.value){
 

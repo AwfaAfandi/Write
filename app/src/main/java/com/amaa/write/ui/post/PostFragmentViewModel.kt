@@ -18,6 +18,9 @@ import kotlinx.coroutines.launch
 class PostFragmentViewModel(private val repository: PostsRepository, application: Application):
     AndroidViewModel(application), Observable {
     lateinit var email : String
+    lateinit var firstName : String
+    lateinit var lastName : String
+
 
     var userPostsLiveData = MutableLiveData<Array<PostsEntity>>()
 
@@ -63,8 +66,7 @@ class PostFragmentViewModel(private val repository: PostsRepository, application
             uiScope.launch {
 
 
-                    val firstName = "awfa"
-                    val lastName = "afandi"
+
 
                     val post = inputPost.value!!
                     insert(PostsEntity(0, firstName, lastName, email, post))
