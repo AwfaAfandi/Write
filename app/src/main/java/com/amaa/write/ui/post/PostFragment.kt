@@ -105,7 +105,7 @@ class PostFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(action)
         }
 
-
+        postsViewModel.email = usernameId
 
     }
 
