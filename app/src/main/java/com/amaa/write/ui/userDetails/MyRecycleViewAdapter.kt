@@ -68,21 +68,12 @@ class MyviewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder
              builder.setMessage("Are you sure you want to delete this post?")
 
              builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-
-                 viewModel.deletepost(post)
+              viewModel.deletepost(post)
              }
-
              builder.setNegativeButton(android.R.string.no) { dialog, which ->
 
              }
              builder.show()
-
-
-          }
-
-
-
-        }
-
-
-}
+              }
+              }
+                }

@@ -3,6 +3,7 @@ package com.amaa.write.ui.login
 import android.app.Application
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
@@ -20,7 +21,6 @@ import kotlinx.coroutines.launch
 class LoginViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
 
-    val users = repository.users
 
     @Bindable
     val inputUsername = MutableLiveData<String?>()
@@ -69,9 +69,9 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
                 val usersNames = repository.getUserName(inputUsername.value!!)
                 if (usersNames != null) {
                     if(usersNames.passwrd == inputPassword.value){
-                        inputUsername.value = null
+
                         inputPassword.value = null
-                        _navigatetoUserDetails.value = true
+                       _navigatetoUserDetails.value = true
                     }else{
                         _errorToastInvalidPassword.value = true
                     }

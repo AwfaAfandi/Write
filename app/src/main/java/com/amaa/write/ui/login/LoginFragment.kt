@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel.errotoastUsername .observe(viewLifecycleOwner, Observer { hasError->
             if(hasError==true){
-                Toast.makeText(requireContext(), "User doesnt exist,please Register!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "User doesn't exist,please Register!", Toast.LENGTH_SHORT).show()
                 loginViewModel.donetoastErrorUsername()
             }
         })
@@ -76,7 +76,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel.navigatetoUserDetails.observe(viewLifecycleOwner, Observer { hasFinished->
             if (hasFinished == true){
-                Log.i("MYTAG","insidi observe")
+                Log.i("MYTAG","inside observe")
                 navigateUserDetails()
                 loginViewModel.doneNavigatingUserDetails()
             }
@@ -97,7 +97,7 @@ class LoginFragment : Fragment() {
 
     private fun navigateUserDetails() {
         Log.i("MYTAG","insidisplayUsersList")
-        val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment()
+        val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment(username = loginViewModel.inputUsername.value.toString())
         NavHostFragment.findNavController(this).navigate(action)
     }
 

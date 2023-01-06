@@ -9,32 +9,40 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.amaa.write.database.AppPostsDatabase
 import com.amaa.write.database.posts.PostsRepository
+import com.amaa.write.database.userinformation.RegisterRepository
 import com.amaa.write.databinding.FragmentPostBinding
+import com.amaa.write.ui.login.LoginViewModel
+import com.amaa.write.ui.userDetails.UserDetailsFragment
 
 
 class PostFragment : Fragment() {
+
+    companion object {
+        val USERNAME = "username"
+    }
+    private lateinit var usernameId: String
     private var _binding: FragmentPostBinding  ? = null
     private val binding get() = _binding!!
     private lateinit var postsViewModel: PostFragmentViewModel
     private lateinit var username: String
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        val bundle = this.arguments
-        if (bundle != null) {
-            username = bundle.getString("UserName").toString()
+        arguments?.let {
+            usernameId = it.getString(UserDetailsFragment.USERNAME).toString()
         }
 
-
-
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +66,7 @@ class PostFragment : Fragment() {
         binding.postsLayout = postsViewModel
 
         binding.lifecycleOwner = this
+
 
 
         postsViewModel.navigateto.observe(viewLifecycleOwner, Observer { hasFinished->
@@ -92,9 +101,8 @@ class PostFragment : Fragment() {
 
         _binding?.cancelButton?.setOnClickListener{
 
-            val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment()
+            val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment(usernameId)
             NavHostFragment.findNavController(this).navigate(action)
-
         }
 
 
@@ -103,7 +111,7 @@ class PostFragment : Fragment() {
 
 
     private fun displayPostsList() {
-        val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment()
+        val action = PostFragmentDirections.actionPostFragmentToUserDetailsFragment(usernameId)
         NavHostFragment.findNavController(this).navigate(action)
     }
 

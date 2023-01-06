@@ -18,14 +18,24 @@ import com.amaa.write.databinding.UserDetailsFragmentBinding
 
 class UserDetailsFragment : Fragment() {
 
-
+    companion object {
+        val USERNAME = "username"
+    }
 
     private lateinit var userDetailsViewModel: UserDetailsViewModel
-
+    private lateinit var usernameId: String
 
     private var _binding: UserDetailsFragmentBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            usernameId = it.getString(USERNAME).toString()
+        }
+
+    }
 
 
     override fun onCreateView(
@@ -86,8 +96,9 @@ class UserDetailsFragment : Fragment() {
 
         binding.newpostButton.setOnClickListener{
 
-            val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToPostFragment()
+            val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToPostFragment(username = usernameId)
             NavHostFragment.findNavController(this).navigate(action)
+
 
  }
 

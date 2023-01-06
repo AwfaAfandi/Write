@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
     xmlns:tools="http://schemas.android.com/tools"
-
     app:startDestination="@id/loginFragment">
 
     <fragment
@@ -17,8 +16,14 @@
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.amaa.write.ui.userDetails.UserDetailsFragment"
-        android:label="Posts List"
+        android:label="New Posts"
         tools:layout="@layout/user_details_fragment">
+
+    <argument
+        android:name="username"
+        app:argType="string" />
+
+
         <action
             android:id="@+id/action_userDetailsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -46,6 +51,11 @@
         android:name="com.amaa.write.ui.post.PostFragment"
         android:label="New Post"
         tools:layout="@layout/fragment_post">
+
+        <argument
+            android:name="username"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_postFragment_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment" />
