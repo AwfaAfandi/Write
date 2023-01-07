@@ -47,7 +47,6 @@ class LoginFragment : Fragment() {
 
         loginViewModel.navigatetoRegister.observe(viewLifecycleOwner, Observer { hasFinished->
             if (hasFinished == true){
-                Log.i("MYTAG","insidi observe")
                 displayUsersList()
                 loginViewModel.doneNavigatingRegiter()
             }
@@ -76,7 +75,6 @@ class LoginFragment : Fragment() {
 
         loginViewModel.navigatetoUserDetails.observe(viewLifecycleOwner, Observer { hasFinished->
             if (hasFinished == true){
-                Log.i("MYTAG","inside observe")
                 navigateUserDetails()
                 loginViewModel.doneNavigatingUserDetails()
             }
@@ -89,14 +87,12 @@ class LoginFragment : Fragment() {
 
 
     private fun displayUsersList() {
-        Log.i("MYTAG","insidisplayUsersList")
         val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
         NavHostFragment.findNavController(this).navigate(action)
 
     }
 
     private fun navigateUserDetails() {
-        Log.i("MYTAG","insidisplayUsersList")
         val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment(username = loginViewModel.inputUsername.value.toString() ,firstname = loginViewModel.usersNames.firstName ,lastname = loginViewModel.usersNames.lastName )
         NavHostFragment.findNavController(this).navigate(action)
     }

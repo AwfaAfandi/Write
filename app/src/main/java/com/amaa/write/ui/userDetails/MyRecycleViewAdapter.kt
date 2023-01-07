@@ -45,7 +45,6 @@ class MyRecycleViewAdapter(private val PostsList: List<PostsEntity>,viewModel: U
 }
 
 class MyviewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
-//    private var userDetailsViewModel: UserDetailsViewModel? = null
 
     fun bind(post : PostsEntity,viewModel: UserDetailsViewModel,context: Context?){
         binding.FirstNameTextView.text = post.firstName

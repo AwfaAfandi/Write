@@ -11,9 +11,6 @@ interface RegisterDatabaseDao {
     @Insert
     suspend fun insert(register: RegisterEntity)
 
-    //@Delete
-    //suspend  fun deleteSubscriber(register: RegisterEntity):Int
-
     @Query("SELECT * FROM Register_users_table ORDER BY userId DESC")
     fun getAllUsers(): LiveData<List<RegisterEntity>>
 

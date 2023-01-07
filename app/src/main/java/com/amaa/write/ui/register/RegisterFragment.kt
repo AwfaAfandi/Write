@@ -40,7 +40,7 @@ class RegisterFragment : Fragment() {
 
         val factory = RegisterViewModelFactory(repository, application)
 
-        registerViewModel = ViewModelProvider(this, factory).get(RegisterViewModel::class.java)
+        registerViewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 
         binding.myViewModel = registerViewModel
 
@@ -48,14 +48,12 @@ class RegisterFragment : Fragment() {
         
         registerViewModel.navigateto.observe(viewLifecycleOwner, Observer { hasFinished->
             if (hasFinished == true){
-                Log.i("MYTAG","insidi observe")
                 displayUsersList()
                 registerViewModel.doneNavigating()
             }
         })
 
         registerViewModel.userDetailsLiveData.observe(viewLifecycleOwner, Observer {
-            Log.i("MYTAG",it.toString()+"000000000000000000000000")
         })
 
 
@@ -77,7 +75,6 @@ class RegisterFragment : Fragment() {
     }
 
     private fun displayUsersList() {
-        Log.i("MYTAG","insidisplayUsersList")
         val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
         NavHostFragment.findNavController(this).navigate(action)
 

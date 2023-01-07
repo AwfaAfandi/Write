@@ -90,7 +90,6 @@ class UserDetailsFragment : Fragment() {
 
 
     private fun displayUsersList() {
-        Log.i("MYTAG", "Inside ...UserDetails..Fragment")
         userDetailsViewModel.users.observe(viewLifecycleOwner, Observer {
             binding.usersRecyclerView.adapter = MyRecycleViewAdapter(it,userDetailsViewModel,context)
         })
@@ -108,9 +107,9 @@ class UserDetailsFragment : Fragment() {
 
  }
 
-binding.bottomBar.setOnItemSelectedListener {
+binding.bottomBar.setOnItemSelectedListener {it.itemId
 
-    when (binding.bottomBar.id) {
+    when (it.itemId) {
 
         R.id.Home_tab -> {
 
@@ -125,13 +124,14 @@ binding.bottomBar.setOnItemSelectedListener {
         }
         R.id.profile_tab -> {
 
-
+           
             return@setOnItemSelectedListener true
         }
         else -> {
 
             val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToLoginFragment()
             NavHostFragment.findNavController(this).navigate(action)
+
             return@setOnItemSelectedListener true
         }
     }

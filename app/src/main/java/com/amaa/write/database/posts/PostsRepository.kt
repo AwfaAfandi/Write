@@ -14,7 +14,6 @@ class PostsRepository(private val dao: PostsDatabaseDao) {
     }
 
     suspend fun getPosts(userName: String): LiveData<List<PostsEntity>> {
-        Log.i("MYTAG", "inside Repository Getusers fun ")
         return dao.getAllPosts()
     }
 
