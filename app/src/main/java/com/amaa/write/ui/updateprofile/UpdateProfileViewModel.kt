@@ -100,9 +100,6 @@ lateinit var inputUsername  : String
                 val usersNames = repository.getUserName(inputUsername)
 
 
-
-
-
                     var user = usersNames?.let { RegisterEntity(userId = it.userId ,firstName = usersNames.firstName, lastName = usersNames.lastName, passwrd = usersNames.passwrd, userName = usersNames.userName) }
                 if (user != null) {
                     delete(RegisterEntity(user.userId,user.firstName,user.lastName,user.userName,user.passwrd))
@@ -112,15 +109,9 @@ lateinit var inputUsername  : String
                     inputPassword.value = null
                     _navigateto.value = true
 
-
-
-
-
             }
 
-
-
-            Toast.makeText(context, "delete account clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Account has been deleted ", Toast.LENGTH_SHORT).show()
         }
 
         builder.setNegativeButton(android.R.string.no) { dialog, which ->
