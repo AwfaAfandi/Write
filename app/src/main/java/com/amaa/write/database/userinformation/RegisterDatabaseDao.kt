@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface RegisterDatabaseDao {
@@ -11,8 +12,9 @@ interface RegisterDatabaseDao {
     @Insert
     suspend fun insert(register: RegisterEntity)
 
-    //@Delete
-    //suspend  fun deleteSubscriber(register: RegisterEntity):Int
+    @Update
+    suspend fun update(register: RegisterEntity)
+
 
     @Query("SELECT * FROM Register_users_table ORDER BY userId DESC")
     fun getAllUsers(): LiveData<List<RegisterEntity>>

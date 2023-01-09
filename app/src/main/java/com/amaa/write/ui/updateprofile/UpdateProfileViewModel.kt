@@ -1,7 +1,9 @@
-package com.amaa.write.ui.register
+package com.amaa.write.ui.updateprofile
 
 import android.app.Application
+import android.provider.SyncStateContract.Helpers.insert
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.*
@@ -10,26 +12,23 @@ import com.amaa.write.database.userinformation.RegisterRepository
 import kotlinx.coroutines.*
 
 
-class RegisterViewModel(private val repository: RegisterRepository, application: Application) :
+class UpdateProfileViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
 
-
+lateinit var inputUsername  : String
 
 
 
     var userDetailsLiveData = MutableLiveData<Array<RegisterEntity>>()
 
     @Bindable
-    val inputFirstName = MutableLiveData<String>()
+    val inputFirstName = MutableLiveData<String?>()
 
     @Bindable
-    val inputLastName = MutableLiveData<String>()
+    val inputLastName = MutableLiveData<String?>()
 
     @Bindable
-    val inputUsername = MutableLiveData<String>()
-
-    @Bindable
-    val inputPassword = MutableLiveData<String>()
+    val inputPassword = MutableLiveData<String?>()
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -51,29 +50,38 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
         get() = _errorToastUsername
 
 
-    fun sumbitButton() {
-       if (inputFirstName.value == null || inputLastName.value == null || inputUsername.value == null || inputPassword.value == null) {
+    fun updateButton() {
+
+        if (inputFirstName.value == null || inputLastName.value == null ||  inputPassword.value == null || inputUsername == null) {
             _errorToast.value = true
         } else {
             uiScope.launch {
-//            withContext(Dispatchers.IO) {
-                val usersNames = repository.getUserName(inputUsername.value!!)
-               if (usersNames != null) {
+                    val usersNames = repository.getUserName(inputUsername)
+                    if (usersNames == null) {
                     _errorToastUsername.value = true
-                     } else {
+                } else {
+
+
+
                     val firstName = inputFirstName.value!!
                     val lastName = inputLastName.value!!
-                    val email = inputUsername.value!!
                     val password = inputPassword.value!!
-                    insert(RegisterEntity(0, firstName, lastName, email, password))
+                        var user = RegisterEntity(userId =usersNames.userId ,firstName = firstName, lastName = lastName, passwrd = password, userName = usersNames.userName)
+                    update(RegisterEntity(user.userId,user.firstName,user.lastName,user.userName,user.passwrd))
                     inputFirstName.value = null
                     inputLastName.value = null
-                    inputUsername.value = null
                     inputPassword.value = null
                     _navigateto.value = true
+
+
+
+
                 }
             }
         }
+
+
+
     }
 
 
@@ -93,9 +101,11 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
         _errorToast.value = false
       }
 
-    private fun insert(user: RegisterEntity): Job = viewModelScope.launch {
-        repository.insert(user)
+    private fun update(user: RegisterEntity): Job = viewModelScope.launch {
+        repository.update(user)
     }
+
+
 
 
 

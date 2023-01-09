@@ -98,19 +98,16 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
 
     fun donetoast() {
         _errorToast.value = false
-        Log.i("MYTAG", "Done taoasting ")
-    }
+        }
 
 
     fun donetoastErrorUsername() {
         _errorToastUsername .value = false
-        Log.i("MYTAG", "Done taoasting ")
-    }
+        }
 
     fun donetoastInvalidPassword() {
         _errorToastInvalidPassword .value = false
-        Log.i("MYTAG", "Done taoasting ")
-    }
+         }
 
 
 

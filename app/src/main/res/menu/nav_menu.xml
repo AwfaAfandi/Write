@@ -6,11 +6,7 @@
         android:icon="@drawable/ic_baseline_home_24"
 
         />
-    <item android:title="Search"
-        android:id="@+id/search_tab"
-        android:icon="@drawable/ic_baseline_search_24"
 
-        />
     <item android:title="Profile"
 
         android:id="@+id/profile_tab"
