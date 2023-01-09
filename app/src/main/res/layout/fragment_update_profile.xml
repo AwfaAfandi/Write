@@ -113,6 +113,7 @@
             android:ems="10"
             android:hint="@string/PasswordTextFiels"
             android:importantForAutofill="no"
+            android:password="true"
             android:inputType="textPersonName"
             android:text="@={updateProfile.inputPassword}"
             android:textSize="14sp"
@@ -136,6 +137,21 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordTextField" />
+
+        <TextView
+            android:id="@+id/SignUpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Delete My Account"
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:onClick="@{()->updateProfile.deleteAccount(context)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitButton" />
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomBar"

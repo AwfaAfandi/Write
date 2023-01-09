@@ -147,6 +147,7 @@
             android:hint="@string/PasswordTextFiels"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
+            android:password="true"
             android:text="@={myViewModel.inputPassword}"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -2,6 +2,7 @@ package com.amaa.write.database.userinformation
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -15,6 +16,8 @@ interface RegisterDatabaseDao {
     @Update
     suspend fun update(register: RegisterEntity)
 
+    @Delete
+    suspend fun delete(register: RegisterEntity)
 
     @Query("SELECT * FROM Register_users_table ORDER BY userId DESC")
     fun getAllUsers(): LiveData<List<RegisterEntity>>

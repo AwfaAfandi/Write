@@ -13,6 +13,9 @@ class RegisterRepository(private val dao: RegisterDatabaseDao) {
     suspend fun update(user: RegisterEntity) {
         return dao.update(user)
     }
+    suspend fun delete(user: RegisterEntity) {
+        return dao.delete(user)
+    }
     suspend fun getUserName(userName: String):RegisterEntity?{
         return dao.getUsername(userName)
     }

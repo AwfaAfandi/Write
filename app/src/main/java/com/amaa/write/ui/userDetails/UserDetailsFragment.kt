@@ -99,6 +99,13 @@ class UserDetailsFragment : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
+
+        userDetailsViewModel.email = usernameId
+        userDetailsViewModel.firstName = firstnameId
+        userDetailsViewModel.lastName = lastnameId
+
+
+
         binding.newpostButton.setOnClickListener{
 
             val action = UserDetailsFragmentDirections.actionUserDetailsFragmentToPostFragment(username = usernameId , firstname = firstnameId  ,lastname = lastnameId )

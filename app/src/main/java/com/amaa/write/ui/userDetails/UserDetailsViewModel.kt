@@ -10,6 +10,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class UserDetailsViewModel (private val repository: PostsRepository, application: Application):AndroidViewModel(application){
+    lateinit var email : String
+    lateinit var firstName : String
+    lateinit var lastName : String
+
+
 
     val users = repository.posts
 
