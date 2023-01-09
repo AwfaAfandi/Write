@@ -119,7 +119,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
+            tools:ignore="TextFields" />
 
         <Button
             android:id="@+id/submitButton"
@@ -130,7 +131,7 @@
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/blue"
             android:onClick="@{()->updateProfile.updateButton()}"
-            android:text="Update"
+            android:text="@string/update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

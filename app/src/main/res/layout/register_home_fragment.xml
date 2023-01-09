@@ -94,7 +94,7 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="80dp"
-            android:text="Email:"
+            android:text="@string/email"
             android:textAlignment="viewStart"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -152,7 +152,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
+            tools:ignore="TextFields" />
 
         <Button
             android:id="@+id/submitButton"

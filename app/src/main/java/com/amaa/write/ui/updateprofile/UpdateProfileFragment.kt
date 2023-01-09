@@ -15,7 +15,6 @@ import com.amaa.write.database.AppDatabase
 import com.amaa.write.database.userinformation.RegisterRepository
 import com.amaa.write.databinding.FragmentUpdateProfileBinding
 import com.amaa.write.ui.userDetails.UserDetailsFragment
-import com.amaa.write.ui.userDetails.UserDetailsFragmentDirections
 
 class UpdateProfileFragment : Fragment() {
 
