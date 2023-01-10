@@ -64,6 +64,8 @@ class RegisterFragment : Fragment() {
             }
         })
 
+
+
         registerViewModel.errotoastUsername.observe(viewLifecycleOwner, Observer { hasError->
             if(hasError==true){
                 Toast.makeText(requireContext(), "Email Already Exists", Toast.LENGTH_SHORT).show()

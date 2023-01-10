@@ -61,7 +61,7 @@ class LoginFragment : Fragment() {
 
         loginViewModel.errotoastUsername .observe(viewLifecycleOwner, Observer { hasError->
             if(hasError==true){
-                Toast.makeText(requireContext(), "User doesn't exist,please Register!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "This user not exist,Please Register!", Toast.LENGTH_SHORT).show()
                 loginViewModel.donetoastErrorUsername()
             }
         })

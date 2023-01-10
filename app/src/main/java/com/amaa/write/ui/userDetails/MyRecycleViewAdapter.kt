@@ -68,6 +68,8 @@ class MyviewHolder(private val binding: ListItemBinding):RecyclerView.ViewHolder
 
              builder.setPositiveButton(android.R.string.yes) { dialog, which ->
               viewModel.deletepost(post)
+                 Toast.makeText(context, "Post successfully Deleted",
+                     Toast.LENGTH_SHORT).show()
              }
              builder.setNegativeButton(android.R.string.no) { dialog, which ->
 

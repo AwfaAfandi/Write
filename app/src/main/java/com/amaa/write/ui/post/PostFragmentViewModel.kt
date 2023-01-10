@@ -2,6 +2,7 @@ package com.amaa.write.ui.post
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
@@ -78,6 +79,10 @@ class PostFragmentViewModel(private val repository: PostsRepository, application
 
             }
         }
+
+        Toast.makeText(getApplication(), "Post successfully added",
+            Toast.LENGTH_SHORT).show()
+
     }
 
 
