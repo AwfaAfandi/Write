@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.*
+import androidx.navigation.fragment.NavHostFragment
 import com.amaa.write.database.userinformation.RegisterEntity
 import com.amaa.write.database.userinformation.RegisterRepository
 import kotlinx.coroutines.*
@@ -20,7 +21,6 @@ class UpdateProfileViewModel(private val repository: RegisterRepository, applica
     AndroidViewModel(application), Observable {
 
 lateinit var inputUsername  : String
-
 
 
     var userDetailsLiveData = MutableLiveData<Array<RegisterEntity>>()
@@ -54,7 +54,7 @@ lateinit var inputUsername  : String
         get() = _errorToastUsername
 
 
-    fun updateButton() {
+    fun updateButton(context : Context) {
 
         if (inputFirstName.value == null || inputLastName.value == null ||  inputPassword.value == null || inputUsername == null) {
             _errorToast.value = true
@@ -77,6 +77,7 @@ lateinit var inputUsername  : String
                     inputPassword.value = null
                     _navigateto.value = true
 
+                        Toast.makeText(context, "Account has been updated ", Toast.LENGTH_SHORT).show()
 
 
 
@@ -98,9 +99,7 @@ lateinit var inputUsername  : String
 
             uiScope.launch {
                 val usersNames = repository.getUserName(inputUsername)
-
-
-                    var user = usersNames?.let { RegisterEntity(userId = it.userId ,firstName = usersNames.firstName, lastName = usersNames.lastName, passwrd = usersNames.passwrd, userName = usersNames.userName) }
+                var user = usersNames?.let { RegisterEntity(userId = it.userId ,firstName = usersNames.firstName, lastName = usersNames.lastName, passwrd = usersNames.passwrd, userName = usersNames.userName) }
                 if (user != null) {
                     delete(RegisterEntity(user.userId,user.firstName,user.lastName,user.userName,user.passwrd))
                 }
@@ -109,9 +108,11 @@ lateinit var inputUsername  : String
                     inputPassword.value = null
                     _navigateto.value = true
 
+                Toast.makeText(context, "Account has been deleted ", Toast.LENGTH_SHORT).show()
+
             }
 
-            Toast.makeText(context, "Account has been deleted ", Toast.LENGTH_SHORT).show()
+
         }
 
         builder.setNegativeButton(android.R.string.no) { dialog, which ->

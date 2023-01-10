@@ -72,7 +72,7 @@ class UpdateProfileFragment : Fragment() {
 
         updateProfileViewModel.navigateto.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished == true) {
-                displayUsersList()
+                displayLogIn()
                 updateProfileViewModel.doneNavigating()
             }
         })
@@ -99,16 +99,15 @@ class UpdateProfileFragment : Fragment() {
         return binding.root
     }
 
-    private fun displayUsersList() {
+    private fun displayLogIn() {
         val action =
-            UpdateProfileFragmentDirections.actionUpdateProfileFragmentToUserDetailsFragment(
-                usernameId,
-                firstnameId,
-                lastnameId
-            )
+            UpdateProfileFragmentDirections.actionUpdateProfileFragmentToLoginFragment()
         NavHostFragment.findNavController(this).navigate(action)
 
     }
+
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
