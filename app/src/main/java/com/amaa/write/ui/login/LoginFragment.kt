@@ -93,8 +93,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateUserDetails() {
-        val action = LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment(username = loginViewModel.inputUsername.value.toString() ,firstname = loginViewModel.usersNames.firstName ,lastname = loginViewModel.usersNames.lastName )
-        NavHostFragment.findNavController(this).navigate(action)
+        val action = loginViewModel.usersNames?.let { LoginFragmentDirections.actionLoginFragmentToUserDetailsFragment(username = loginViewModel.inputUsername.value.toString() ,firstname = it.firstName ,lastname = loginViewModel.usersNames!!.lastName ) }
+        if (action != null) {
+            NavHostFragment.findNavController(this).navigate(action)
+        }
     }
 
 

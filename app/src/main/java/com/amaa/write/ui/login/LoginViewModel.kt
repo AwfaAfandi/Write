@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
-    lateinit var usersNames : RegisterEntity
+     var usersNames : RegisterEntity? = null
 
     @Bindable
     val inputUsername = MutableLiveData<String?>()
@@ -67,10 +67,10 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
             _errorToast.value = true
         } else {
             uiScope.launch {
-                 usersNames = repository.getUserName(inputUsername.value!!)!!
-                if (usersNames != null) {
-                    if(usersNames.passwrd == inputPassword.value){
 
+                 usersNames = repository.getUserName(inputUsername.value!!)
+                if (usersNames != null) {
+                    if(usersNames?.passwrd == inputPassword.value){
                         inputPassword.value = null
                        _navigatetoUserDetails.value = true
                     }else{
